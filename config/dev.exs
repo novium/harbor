@@ -69,7 +69,7 @@ config :phoenix, :plug_init_mode, :runtime
 # Configure your database
 config :harbor, Harbor.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "harbor",
   database: "harbor_dev",
-  hostname: "localhost",
+  hostname: "db",
   pool_size: 10
