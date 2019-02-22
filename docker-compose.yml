@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.6"
 services:
   harbor:
     build: .
@@ -6,20 +6,22 @@ services:
     ports: 
       - 4000:4000
     networks:
+      - db
       - harbor
+    depends_on:
       - db
     volumes:
       - type: bind
         source: ./
         target: /usr/harbor
-    depends_on:
-      - db
   
   db:
     image: postgres
     restart: always
     networks:
       - db
+    ports:
+      - 5432
     environment:
       POSTGRES_PASSWORD: harbor #TODO
 
