@@ -1,6 +1,6 @@
 version: "3.6"
 services:
-  harbor:
+  harbor-api:
     build: .
     command: "mix phx.server"
     ports: 
@@ -11,10 +11,24 @@ services:
     depends_on:
       - db
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - type: bind
         source: ./
         target: /usr/harbor
-  
+
+  harbor-web:
+    image: "node:8"
+    working_dir: /usr/web
+    command: "npm run dev"
+    ports:
+      - 8080:8080
+    depends_on:
+      - harbor-api
+    volumes:
+      - type: bind
+        source: ./web
+        target: /usr/web
+
   db:
     image: postgres
     restart: always

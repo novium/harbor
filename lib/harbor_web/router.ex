@@ -19,6 +19,20 @@ defmodule HarborWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api", HarborWeb.API do
+    pipe_through :api
+  end
+
+  forward "/graphql", Absinthe.Plug,
+    json_codec: Jason,
+    schema: HarborWeb.Schema
+  
+  if Mix.env == :dev do
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      json_codec: Jason,
+      schema: HarborWeb.Schema
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", HarborWeb do
   #   pipe_through :api
