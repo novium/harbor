@@ -28,6 +28,7 @@ services:
       - type: bind
         source: ./web
         target: /usr/web
+      - node_modules:/usr/web/node_modules
 
   db:
     image: postgres
@@ -42,3 +43,6 @@ services:
 networks:
   harbor:
   db:
+
+volumes:
+  node_modules:
