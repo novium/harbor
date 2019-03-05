@@ -10,6 +10,7 @@ Defines node schema
         field :updated_at, :string
         field :spec, :node_spec
         field :description, :description
+
     end
 
     object :node_spec do
