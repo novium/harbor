@@ -5,6 +5,12 @@ defmodule HarborWeb.Resolvers.Node do
         {:ok, transform_nodes(data)} 
     end
 
+    def count_nodes(_parent, _args, _resolution) do
+        data = Jason.decode!(HTTPoison.get!("http+unix://%2Fvar%2Frun%2Fdocker.sock/nodes").body)
+        {:ok, %{ all: length(data) } }
+    end
+
+
     defp transform_nodes(nodes) do
         Enum.map(nodes, fn node -> transform_node node end)
     end

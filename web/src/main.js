@@ -2,6 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 
+import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from 'apollo-link-http'
+import { hasSubscription } from '@jumpn/utils-graphql'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import absintheSocketLink from './apollo/absinthe-socket'
+import VueApollo from 'vue-apollo'
+import { split } from 'apollo-link'
+
 // Components
 import './components'
 
@@ -22,10 +30,28 @@ sync(store, router)
 
 Vue.config.productionTip = false
 
+const link = split(
+  operation => hasSubscription(operation.query),
+  absintheSocketLink,
+  createHttpLink({ uri: 'http://localhost:4000/graphql' })
+)
+
+const apolloClient = new ApolloClient({
+  link: link,
+  cache: new InMemoryCache()
+})
+
+Vue.use(VueApollo)
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient
+})
+
 /* eslint-disable no-new */
 new Vue({
   i18n,
   router,
   store,
+  apolloProvider,
   render: h => h(App)
 }).$mount('#app')

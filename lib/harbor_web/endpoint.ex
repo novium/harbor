@@ -42,5 +42,7 @@ defmodule HarborWeb.Endpoint do
     key: "_harbor_key",
     signing_salt: "+BC38P36"
 
+  plug CORSPlug, origin: ["http://localhost:4000", "http://localhost:8080"]
+
   plug HarborWeb.Router
 end

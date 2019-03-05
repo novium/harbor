@@ -46,6 +46,7 @@ defmodule Harbor.MixProject do
 
       {:httpoison, "~> 1.5"},
       {:absinthe_plug, "~> 1.4"},
+      {:cors_plug, "~> 2.0"},
     ]
   end
 
