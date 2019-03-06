@@ -1,7 +1,7 @@
 defmodule HarborWeb.Schema.NodeTypes do
-@moduledoc """
-Defines node schema
-"""
+    @moduledoc """
+    Defines node schema
+    """
     use Absinthe.Schema.Notation
 
     object :node do
