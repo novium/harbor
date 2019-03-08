@@ -1,5 +1,33 @@
 <template>
-  <v-container
+<v-container fill-height fluid grid-list-xl>
+  <v-layout wrap>
+    <v-flex sm6 xs12 md6 lg3>
+      <material-stats-card
+        color="green"
+        icon="mdi-content-copy"
+        title="Nodes"
+        :value="nodes_count.all.toString()"
+        small-value=""
+        sub-text="Add more nodes here"
+        v-if="!$apollo.loading"
+      />
+    </v-flex>
+
+    <v-flex sm6 xs12 md6 lg3>
+      <material-stats-card
+        color="blue"
+        icon="mdi-content-copy"
+        title="Managers"
+        value="..."
+        small-value=""
+        sub-text="Add more managers here"
+        v-if="!$apollo.loading"
+      />
+    </v-flex>
+  </v-layout>
+</v-container>
+
+<!--  <v-container
     fill-height
     fluid
     grid-list-xl
@@ -66,7 +94,7 @@
         </material-card>
       </v-flex>
     </v-layout>
-  </v-container>
+  </v-container>-->
 </template>
 
 <script>

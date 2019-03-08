@@ -1,4 +1,4 @@
-@import "material-dashboard/mixins";
+/*@import "material-dashboard/mixins";
 @import "material-dashboard/variables";
 @import "material-dashboard/typography";
 @import "material-dashboard/sidebar";
@@ -15,3 +15,8 @@
 @import "material-dashboard/alerts";
 @import "material-dashboard/fixed-plugin";
 @import "material-dashboard/dropdown";
+*/
+
+@import "material-dashboard/variables";
+@import "material-dashboard/mixins";
+@import "material-dashboard/cards";
