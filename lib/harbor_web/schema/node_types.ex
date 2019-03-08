@@ -17,7 +17,7 @@ defmodule HarborWeb.Schema.NodeTypes do
         field :name, :string
         field :labels, :labels
         field :role, :string # TODO: Enforce valid values?
-        field :availability, :string # TODO: Enforce valid values?  
+        field :availability, :string # TODO: Enforce valid values?
     end
 
     object :description do
