@@ -2,6 +2,7 @@ defmodule HarborWeb.Schema do
     use Absinthe.Schema
     import_types HarborWeb.Schema.NodeTypes
     import_types HarborWeb.Schema.ContainerTypes
+    import_types HarborWeb.Schema.ImageTypes
     import_types HarborWeb.Schema.GeneralTypes
 
     alias HarborWeb.Resolvers
@@ -20,6 +21,11 @@ defmodule HarborWeb.Schema do
         @spec "Get containers"
         field :containers, list_of(:container) do
             resolve &Resolvers.Container.list_containers/3
+        end
+
+        @spec "Get images"
+        field :images, list_of(:image) do
+            resolve &Resolvers.Image.list_images/3
         end
     end
 end
