@@ -19,7 +19,7 @@
     "chartist": "0.11.0",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.13.1",
     "phoenix": "^1.4.1",
     "pretty-bytes": "^5.1.0",
     "sass-loader": "^7.1.0",
